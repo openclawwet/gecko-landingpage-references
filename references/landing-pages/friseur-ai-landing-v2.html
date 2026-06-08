@@ -1,0 +1,1134 @@
+<!-- Single-file reference generated from local T9 archive for Gecko landing-page review. -->
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Friseur AI – KI‑Frisuren live im Salon</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #F2EDE4;          /* warm off-white paper */
+    --bg-2: #EBE5DA;        /* slightly deeper paper */
+    --ink: #1A1612;         /* warm near-black */
+    --ink-2: #3B342B;       /* secondary text */
+    --ink-3: #6E6557;       /* muted */
+    --line: rgba(26,22,18,0.12);
+    --line-2: rgba(26,22,18,0.06);
+    --accent: #7A6A52;      /* warm taupe */
+    --accent-ink: #FAF7F1;
+    --card: #FBF8F2;
+    --shadow: 0 1px 2px rgba(26,22,18,.04), 0 8px 24px -8px rgba(26,22,18,.10);
+    --shadow-lg: 0 1px 2px rgba(26,22,18,.05), 0 24px 60px -20px rgba(26,22,18,.22);
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);}
+  body{
+    font-family: 'Geist', ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size:16px; line-height:1.55; letter-spacing:-0.005em;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+
+  /* Subtle grain layer over everything */
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:1000;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-size:240px 240px;
+    opacity:.06; mix-blend-mode:multiply;
+  }
+
+  .serif{ font-family:'Instrument Serif', 'Times New Roman', serif; font-weight:400; letter-spacing:-0.01em; }
+  .hand { font-family:'Caveat', cursive; font-weight:500; }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{ max-width:1240px; margin:0 auto; padding:0 22px; }
+  @media (min-width:780px){ .wrap{ padding:0 40px; } }
+
+  /* ───── Nav ───── */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter:saturate(140%) blur(10px);
+    -webkit-backdrop-filter:saturate(140%) blur(10px);
+    background:color-mix(in oklab, var(--bg) 78%, transparent);
+    border-bottom:1px solid var(--line-2);
+  }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; height:62px; }
+  .brand{ display:flex; align-items:center; gap:10px; font-weight:600; letter-spacing:-0.01em; font-size:16px;}
+  .brand-mark{
+    width:28px; height:28px; border-radius:50%;
+    background:var(--ink); color:var(--bg);
+    display:grid; place-items:center; font-family:'Instrument Serif', serif; font-size:18px; line-height:1;
+    font-style:italic;
+  }
+  .nav-links{ display:none; gap:28px; font-size:14px; color:var(--ink-2); }
+  .nav-links a:hover{ color:var(--ink); }
+  @media (min-width:880px){ .nav-links{ display:flex; } }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    height:42px; padding:0 18px; border-radius:999px;
+    font-size:14px; font-weight:500; letter-spacing:-0.005em;
+    border:1px solid transparent; cursor:pointer; white-space:nowrap;
+    transition: transform .15s ease, background .2s ease, border-color .2s ease, color .2s ease;
+  }
+  .btn-primary{ background:var(--ink); color:var(--bg); }
+  .btn-primary:hover{ transform:translateY(-1px); background:#000; }
+  .btn-ghost{ background:transparent; color:var(--ink); border-color:var(--line); }
+  .btn-ghost:hover{ background:rgba(26,22,18,.04); }
+  .btn-accent{ background:var(--accent); color:var(--accent-ink); }
+  .btn-accent:hover{ filter:brightness(1.05); transform:translateY(-1px); }
+  .btn-sm{ height:36px; padding:0 14px; font-size:13px; }
+
+  /* ───── Hero ───── */
+  .hero{ position:relative; padding:48px 0 24px; }
+  @media (min-width:780px){ .hero{ padding:80px 0 40px; } }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:6px 12px; border-radius:999px;
+    background:var(--card); border:1px solid var(--line);
+    font-size:12.5px; color:var(--ink-2); letter-spacing:0;
+    box-shadow:var(--shadow);
+  }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent); }
+
+  .hero h1{
+    margin:18px 0 0;
+    font-family:'Instrument Serif', serif; font-weight:400;
+    font-size: clamp(40px, 8vw, 76px);
+    line-height:1.02; letter-spacing:-0.02em;
+    color:var(--ink); text-wrap:pretty;
+  }
+  .hero h1 em{ font-style:italic; color:var(--accent); }
+  .hero p.lead{
+    margin:18px 0 0;
+    max-width:560px;
+    color:var(--ink-2);
+    font-size: clamp(15px, 2.2vw, 18px); line-height:1.55;
+  }
+  .hero-cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:26px; }
+  .hero-meta{ display:flex; gap:18px; align-items:center; margin-top:22px; color:var(--ink-3); font-size:13px; flex-wrap:wrap; }
+  .hero-meta .check{ width:16px; height:16px; border-radius:50%; background:var(--ink); color:var(--bg); display:inline-grid; place-items:center; font-size:10px; }
+
+  .hero-grid{
+    display:grid; grid-template-columns: 1fr; gap:40px;
+    align-items:center;
+  }
+  @media (min-width:980px){
+    .hero-grid{ grid-template-columns: 1.05fr 1fr; gap:60px; }
+  }
+
+  /* iPad mock */
+  .ipad-stage{ position:relative; padding:30px 0 10px; }
+  .ipad{
+    position:relative;
+    aspect-ratio: 4/3;
+    background:#0F0D0A;
+    border-radius:28px;
+    padding:14px;
+    box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0,0,0,.4) inset;
+    transform: rotate(-1.2deg);
+  }
+  .ipad::after{
+    content:""; position:absolute; left:50%; top:6px; transform:translateX(-50%);
+    width:6px; height:6px; border-radius:50%; background:#2a2620;
+  }
+  .ipad-screen{
+    position:relative; width:100%; height:100%;
+    border-radius:14px; overflow:hidden;
+    background:#1a1612;
+    display:grid; grid-template-columns: 1fr 1fr;
+  }
+  .ipad-half{ position:relative; overflow:hidden; }
+  .ipad-half img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .ipad-label{
+    position:absolute; left:10px; top:10px;
+    padding:4px 9px; border-radius:6px;
+    background:rgba(255,255,255,.85); color:var(--ink);
+    font-size:10.5px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase;
+    backdrop-filter:blur(6px);
+  }
+  .ipad-divider{
+    position:absolute; left:50%; top:0; bottom:0; width:1px;
+    background:linear-gradient(180deg, transparent, rgba(255,255,255,.6), transparent);
+  }
+  .ipad-handle{
+    position:absolute; left:calc(50% - 18px); top:calc(50% - 18px);
+    width:36px; height:36px; border-radius:50%;
+    background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.35);
+    display:grid; place-items:center; color:var(--ink); font-size:16px;
+  }
+
+  /* Floating cards around iPad */
+  .float-card{
+    position:absolute; background:var(--card);
+    border-radius:14px; padding:12px 14px;
+    border:1px solid var(--line); box-shadow:var(--shadow-lg);
+    font-size:13px; line-height:1.4; max-width:240px;
+  }
+  .float-card .row{ display:flex; align-items:center; gap:10px; }
+  .float-card .av{ width:28px; height:28px; border-radius:50%; background:var(--bg-2); display:grid; place-items:center; font-family:'Instrument Serif',serif; font-size:14px; color:var(--ink); }
+  .float-card .name{ font-weight:600; font-size:13px; }
+  .float-card .sub{ font-size:11px; color:var(--ink-3); }
+  .float-card .body{ margin-top:8px; color:var(--ink-2); font-size:12.5px; }
+
+  .fc-1{ left:-6px; top:-12px; transform:rotate(-3deg); }
+  .fc-2{ right:-10px; bottom:30px; transform:rotate(2.5deg); }
+
+  @media (max-width:780px){
+    .fc-1{ left:6px; top:-8px; max-width:200px; }
+    .fc-2{ right:6px; bottom:-10px; max-width:200px; }
+  }
+
+  /* Hand-drawn annotation */
+  .annot{
+    position:absolute; font-family:'Caveat', cursive; font-weight:500;
+    color:var(--ink-2); font-size:20px; line-height:1.1;
+    transform: rotate(-6deg);
+    pointer-events:none;
+  }
+  .annot svg{ display:block; }
+
+  /* ───── Section primitives ───── */
+  section{ padding: 70px 0; position:relative; }
+  @media (min-width:780px){ section{ padding:110px 0; } }
+  .section-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--ink-3);
+  }
+  .section-eyebrow::before{
+    content:""; width:22px; height:1px; background:var(--ink-3); display:inline-block;
+  }
+  h2.section-title{
+    font-family:'Instrument Serif', serif; font-weight:400;
+    font-size: clamp(32px, 5.4vw, 52px);
+    line-height:1.05; letter-spacing:-0.015em; margin:14px 0 0;
+    text-wrap:balance; max-width:760px;
+  }
+  h2.section-title em{ font-style:italic; color:var(--accent); }
+  .section-lead{
+    margin-top:14px; max-width:560px; color:var(--ink-2);
+    font-size:16px; line-height:1.55;
+  }
+
+  /* ───── Marquee Presets ───── */
+  .marquee-section{ padding: 30px 0 50px; }
+  .marquee{
+    position:relative; overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+            mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+  .marquee-track{
+    display:flex; gap:14px; width:max-content;
+    animation: scroll 90s linear infinite;
+  }
+  .marquee:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes scroll{ to { transform: translateX(-50%); } }
+  .preset{
+    width:160px; flex:0 0 auto;
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    overflow:hidden; box-shadow:var(--shadow);
+  }
+  .preset .ph{
+    aspect-ratio: 3/4; width:100%; display:block;
+    background-size:cover; background-position:center;
+  }
+  .preset .meta{ padding:10px 12px; display:flex; justify-content:space-between; align-items:center; }
+  .preset .meta .name{ font-size:12.5px; font-weight:500; }
+  .preset .meta .pill{ font-size:10.5px; padding:2px 7px; border-radius:999px; background:var(--bg-2); color:var(--ink-3); }
+
+  /* ───── How it works ───── */
+  .steps{
+    display:grid; grid-template-columns:1fr; gap:26px; margin-top:50px;
+  }
+  @media (min-width:780px){ .steps{ grid-template-columns:repeat(3,1fr); gap:30px; } }
+  @media (min-width:680px) and (max-width:1099px){ .steps.steps-4{ grid-template-columns:repeat(2,1fr); gap:22px; } }
+  @media (min-width:1100px){ .steps.steps-4{ grid-template-columns:repeat(4,1fr); gap:22px; } }
+  .step{
+    position:relative; padding:28px;
+    background:var(--card); border:1px solid var(--line); border-radius:18px;
+    box-shadow:var(--shadow);
+  }
+  .step-num{
+    font-family:'Instrument Serif',serif; font-style:italic;
+    font-size:48px; line-height:1; color:var(--accent); margin-bottom:14px;
+  }
+  .step h3{ margin:0 0 8px; font-size:20px; font-weight:600; letter-spacing:-0.01em; }
+  .step p{ margin:0; color:var(--ink-2); font-size:14.5px; line-height:1.55; }
+  .step-illu{
+    margin-top:18px; aspect-ratio: 16/10; border-radius:12px;
+    background:var(--bg-2); display:grid; place-items:center;
+    color:var(--ink-3); font-size:13px;
+    overflow:hidden; position:relative;
+  }
+
+  /* ───── Feature splits ───── */
+  .split{
+    display:grid; grid-template-columns:1fr; gap:40px; align-items:center;
+    margin-top:60px;
+  }
+  @media (min-width:880px){
+    .split{ grid-template-columns: 1fr 1fr; gap:80px; }
+    .split.reverse > *:first-child{ order:2; }
+  }
+  .split h3{
+    font-family:'Instrument Serif',serif; font-weight:400;
+    font-size: clamp(28px, 3.8vw, 40px); line-height:1.1; letter-spacing:-0.015em;
+    margin:14px 0 14px;
+  }
+  .split p{ color:var(--ink-2); font-size:15.5px; line-height:1.6; margin:0 0 12px; max-width:480px; }
+  .split-visual{
+    aspect-ratio: 5/4; border-radius:18px;
+    background:var(--card); border:1px solid var(--line);
+    overflow:hidden; position:relative; box-shadow:var(--shadow);
+  }
+
+  /* ───── Salon benefits cards ───── */
+  .benefits{
+    display:grid; grid-template-columns:1fr; gap:18px; margin-top:50px;
+  }
+  @media (min-width:680px){ .benefits{ grid-template-columns:repeat(2,1fr); } }
+  @media (min-width:980px){ .benefits{ grid-template-columns:repeat(3,1fr); } }
+  .benefit{
+    padding:24px; border-radius:16px; background:var(--card);
+    border:1px solid var(--line); box-shadow:var(--shadow);
+  }
+  .benefit .b-icon{
+    width:34px; height:34px; border-radius:10px;
+    background:var(--bg-2); display:grid; place-items:center;
+    color:var(--accent); font-family:'Instrument Serif',serif; font-size:20px; font-style:italic;
+    margin-bottom:14px;
+  }
+  .benefit h4{ margin:0 0 6px; font-size:17px; font-weight:600; letter-spacing:-0.01em; }
+  .benefit p{ margin:0; color:var(--ink-2); font-size:14px; line-height:1.55; }
+
+  /* ───── Pricing ───── */
+  .price-grid{
+    display:grid; grid-template-columns:1fr; gap:18px; margin-top:50px;
+  }
+  @media (min-width:780px){ .price-grid{ grid-template-columns:repeat(3,1fr); } }
+  .price{
+    padding:30px; border-radius:18px; background:var(--card);
+    border:1px solid var(--line); box-shadow:var(--shadow);
+    display:flex; flex-direction:column; min-height:480px;
+  }
+  .price.featured{ background:var(--ink); color:var(--bg); border-color:var(--ink); position:relative; }
+  .price.featured .p-name, .price.featured .p-amount, .price.featured h4{ color:var(--bg); }
+  .price.featured .p-desc, .price.featured ul li{ color:rgba(250,247,241,.78); }
+  .price .p-name{ font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-3); }
+  .price .p-amount{ font-family:'Instrument Serif',serif; font-size:48px; line-height:1; margin:14px 0 4px; }
+  .price .p-amount sup{ font-size:18px; vertical-align:top; margin-right:4px; color:var(--ink-3); }
+  .price .p-period{ font-size:13px; color:var(--ink-3); }
+  .price .p-desc{ font-size:14px; color:var(--ink-2); margin:14px 0 18px; line-height:1.5; }
+  .price ul{ list-style:none; padding:0; margin:0 0 24px; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .price li{ font-size:14px; color:var(--ink-2); display:flex; gap:10px; align-items:flex-start; line-height:1.5; }
+  .price li::before{
+    content:""; flex:0 0 auto; width:14px; height:14px; margin-top:4px;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center/contain no-repeat;
+            mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center/contain no-repeat;
+    color:var(--accent); opacity:.85;
+  }
+  .price.featured li::before{ color:var(--bg); opacity:1; }
+  .price-badge{
+    position:absolute; top:-10px; left:50%; transform:translateX(-50%);
+    padding:5px 12px; border-radius:999px; background:var(--accent); color:var(--accent-ink);
+    font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
+  }
+  .price .btn-row{ margin-top:auto; }
+  .price.featured .btn-primary{ background:var(--bg); color:var(--ink); }
+  .price.featured .btn-primary:hover{ background:#fff; }
+
+  /* ───── FAQ ───── */
+  .faq{ margin-top:50px; max-width:780px; }
+  .faq details{
+    border-top:1px solid var(--line);
+    padding:18px 0; cursor:pointer;
+  }
+  .faq details:last-of-type{ border-bottom:1px solid var(--line); }
+  .faq summary{
+    list-style:none; display:flex; justify-content:space-between; align-items:center; gap:20px;
+    font-size:17px; font-weight:500; letter-spacing:-0.005em; color:var(--ink);
+  }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary::after{
+    content:"+"; font-family:'Instrument Serif',serif; font-size:26px; line-height:1; color:var(--ink-3);
+    transition: transform .25s ease;
+  }
+  .faq details[open] summary::after{ content:"–"; }
+  .faq .a{ margin-top:10px; color:var(--ink-2); font-size:15px; line-height:1.6; max-width:640px; }
+
+  /* ───── CTA Footer ───── */
+  .cta-block{
+    background:var(--ink); color:var(--bg);
+    border-radius:24px; padding: 64px 28px;
+    text-align:center; position:relative; overflow:hidden;
+    margin-top: 0;
+  }
+  @media (min-width:780px){ .cta-block{ padding: 100px 40px; } }
+  .cta-block h2{
+    font-family:'Instrument Serif', serif; font-weight:400;
+    font-size: clamp(36px, 6vw, 64px); line-height:1.05; letter-spacing:-0.02em;
+    margin:0; color:var(--bg);
+  }
+  .cta-block h2 em{ color: color-mix(in oklab, var(--accent) 80%, white 20%); font-style:italic; }
+  .cta-block p{ margin:18px auto 28px; max-width:520px; color:rgba(250,247,241,.72); font-size:16px; }
+  .cta-block .btn-primary{ background:var(--bg); color:var(--ink); }
+  .cta-block .btn-primary:hover{ background:#fff; }
+  .cta-block .btn-ghost{ color:var(--bg); border-color:rgba(255,255,255,.2); }
+  .cta-block .btn-ghost:hover{ background:rgba(255,255,255,.06); }
+
+  /* footer */
+  footer.foot{
+    padding:50px 0 40px; border-top:1px solid var(--line); margin-top:60px;
+    color:var(--ink-3); font-size:13.5px;
+  }
+  .foot-row{ display:flex; flex-direction:column; gap:18px; }
+  @media (min-width:780px){ .foot-row{ flex-direction:row; justify-content:space-between; align-items:center; } }
+  .foot-links{ display:flex; gap:22px; flex-wrap:wrap; }
+  .foot-links a:hover{ color:var(--ink); }
+
+  /* Hand annotation positions */
+  .a-hero{ right:8%; top:12%; max-width:130px; transform:rotate(6deg); display:none;}
+  @media (min-width:980px){ .a-hero{ display:block; } }
+
+  /* Stat strip */
+  .stats{
+    display:grid; grid-template-columns: repeat(2, 1fr); gap:20px;
+    padding:30px 28px; margin-top:50px;
+    background:var(--card); border:1px solid var(--line); border-radius:18px;
+  }
+  @media (min-width:780px){ .stats{ grid-template-columns: repeat(4, 1fr); padding:36px 40px; } }
+  .stat .v{ font-family:'Instrument Serif', serif; font-size:42px; line-height:1; letter-spacing:-0.01em; }
+  .stat .v em{ color:var(--accent); font-style:italic; }
+  .stat .l{ font-size:13px; color:var(--ink-3); margin-top:6px; }
+
+  /* For-whom logo strip */
+  .whom-strip{
+    display:flex; flex-wrap:wrap; gap:18px 36px; align-items:center;
+    margin-top:36px; color:var(--ink-3);
+  }
+  .whom-strip .item{ display:flex; align-items:center; gap:8px; font-size:14px; }
+  .whom-strip .item::before{
+    content:""; width:6px; height:6px; border-radius:50%; background:var(--accent);
+  }
+
+  /* Mini phone preview in feature split */
+  .mini-feature{
+    position:absolute; inset:0;
+    display:grid; place-items:center;
+    padding:28px;
+  }
+  .mini-card{
+    width:88%; max-width:340px;
+    background:var(--bg); border-radius:16px;
+    border:1px solid var(--line);
+    padding:18px;
+    box-shadow:var(--shadow-lg);
+    transform: rotate(-1deg);
+  }
+  .mini-card .mini-h{ display:flex; gap:10px; align-items:center; }
+  .mini-card .mini-h .av{ width:32px; height:32px; border-radius:50%; background:var(--bg-2); display:grid; place-items:center; font-family:'Instrument Serif',serif; }
+  .mini-card .mini-input{
+    margin-top:14px; padding:12px 14px;
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+    font-size:13px; color:var(--ink-2);
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+  }
+  .mini-card .mini-input .cursor{ width:1.5px; height:14px; background:var(--accent); animation: blink 1s steps(2,start) infinite; }
+  @keyframes blink{ 50%{ opacity:0; } }
+  .mini-card .mini-chips{ display:flex; gap:6px; flex-wrap:wrap; margin-top:12px; }
+  .mini-card .chip{
+    font-size:11.5px; padding:5px 10px; border-radius:999px;
+    background:var(--bg-2); color:var(--ink-2); border:1px solid var(--line);
+  }
+  .mini-card .chip.active{ background:var(--ink); color:var(--bg); border-color:var(--ink); }
+
+  /* Gallery grid for second feature */
+  .feature-grid{
+    position:absolute; inset:24px;
+    display:grid; grid-template-columns: repeat(3,1fr); grid-template-rows: repeat(3,1fr); gap:8px;
+  }
+  .feature-grid .tile{
+    border-radius:8px; background-size:cover; background-position:center;
+    background-color:var(--bg-2);
+  }
+  .feature-grid .tile.featured{
+    grid-column: 2 / span 2; grid-row: 2 / span 2;
+    box-shadow: var(--shadow-lg);
+    border:2px solid var(--accent);
+  }
+
+  /* Tweaks panel sits at bottom-right via the starter */
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">
+      <span class="brand-mark">f</span>
+      <span>Friseur AI</span>
+    </div>
+    <div class="nav-links">
+      <a href="#how">So funktioniert's</a>
+      <a href="#setup">Setup</a>
+      <a href="#presets">Stile</a>
+      <a href="#salon">Für Salons</a>
+      <a href="#preise">Preise</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#cta" class="btn btn-primary btn-sm">Kostenlos starten</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy" style="position:relative;">
+        <div class="eyebrow"><span class="dot"></span> Self-Service Try-On für deinen Salon</div>
+
+        <h1 id="heroTitle">
+          Probiere deine neue Frisur aus — <em>bevor</em> du sie buchst.
+        </h1>
+
+        <p class="lead">
+          Friseur AI ist die iPad-App, die deine Kund:innen im Salon selbst bedienen.
+          Foto machen, Stil wählen, in Sekunden sehen, wie es aussieht. Ohne Termin,
+          ohne Risiko.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#cta" class="btn btn-primary">Kostenlos starten →</a>
+          <a href="#how" class="btn btn-ghost">So funktioniert's ↓</a>
+        </div>
+
+        <div class="hero-meta">
+          <span><span class="check">✓</span> In 5 Minuten eingerichtet</span>
+          <span><span class="check">✓</span> Läuft auf jedem iPad</span>
+          <span><span class="check">✓</span> DSGVO, EU-Hosting</span>
+        </div>
+
+        <!-- handwritten note -->
+        <div class="annot a-hero">
+          <span>kein Termin, kein Druck —<br/>einfach ausprobieren</span>
+          <svg width="80" height="40" viewBox="0 0 80 40" fill="none" style="margin-top:4px; transform:rotate(8deg);">
+            <path d="M2 8 C 20 4, 50 12, 70 30" stroke="#3B342B" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+            <path d="M62 22 L 70 30 L 60 32" stroke="#3B342B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- iPad Mock -->
+      <div class="ipad-stage">
+        <div class="ipad" id="ipadFrame">
+          <div class="ipad-screen">
+            <div class="ipad-half">
+              <div class="ipad-label">Vorher</div>
+              <img alt="Vorher" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=900&q=80" />
+            </div>
+            <div class="ipad-half">
+              <div class="ipad-label" style="background:var(--accent); color:var(--accent-ink);">Nachher · KI</div>
+              <img alt="Nachher" src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=900&q=80" />
+            </div>
+            <div class="ipad-divider"></div>
+            <div class="ipad-handle">↔</div>
+          </div>
+        </div>
+
+        <!-- Floating cards -->
+        <div class="float-card fc-1">
+          <div class="row">
+            <div class="av">QR</div>
+            <div>
+              <div class="name">So einfach wie eine Webseite öffnen</div>
+              <div class="sub">QR scannen → das iPad ist live</div>
+            </div>
+          </div>
+          <div class="body">Kein App-Store, keine Schulung. Aufstellen, scannen, loslegen.</div>
+        </div>
+
+        <div class="float-card fc-2">
+          <div class="row">
+            <div class="av">↗</div>
+            <div>
+              <div class="name">Mitnehmen statt vergessen</div>
+              <div class="sub">Per QR aufs Handy</div>
+            </div>
+          </div>
+          <div class="body">Am Ende ein QR-Code aufs eigene Handy — und der Look reist mit nach Hause.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat"><div class="v"><em>5 Min</em></div><div class="l">Setup pro iPad</div></div>
+      <div class="stat"><div class="v"><em>50</em></div><div class="l">kuratierte Stilvorlagen</div></div>
+      <div class="stat"><div class="v"><em>~12 s</em></div><div class="l">pro KI‑Generierung</div></div>
+      <div class="stat"><div class="v"><em>EU</em></div><div class="l">Hosting in Frankfurt, DSGVO</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE PRESETS -->
+<section class="marquee-section" id="presets" style="padding-top:40px;">
+  <div class="wrap" style="margin-bottom:30px;">
+    <div class="section-eyebrow">50 Stile · ein Tipp</div>
+    <h2 class="section-title">Von <em>Curtain Bangs</em> bis <em>Buzz Cut</em>.</h2>
+    <p class="section-lead">Kuratierte Stilvorlagen, sortiert nach Schnitt, Länge und Farbe — oder einfach in Worten beschreiben.</p>
+  </div>
+
+  <div class="marquee" id="marquee"></div>
+</section>
+
+<!-- HOW IT WORKS (Kund:innen-Flow) -->
+<section id="how">
+  <div class="wrap">
+    <div class="section-eyebrow">So nutzen es deine Kund:innen</div>
+    <h2 class="section-title">Vier Schritte. <em>Kein Lernen.</em></h2>
+    <p class="section-lead">Aufstellen, ausprobieren, mitnehmen. Friseur AI ist als Self-Service gebaut — deine Kund:innen bedienen sich selbst.</p>
+
+    <div class="steps steps-4">
+      <div class="step">
+        <div class="step-num">i</div>
+        <h3>Foto am iPad.</h3>
+        <p>iPad im Schaufenster oder am Tresen. Die Kund:in löst selbst aus — Frontalfoto, Licht egal.</p>
+        <div class="step-illu">
+          <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
+            <rect x="2" y="8" width="116" height="68" rx="10" stroke="#3B342B" stroke-width="1.4"/>
+            <circle cx="60" cy="42" r="14" stroke="#3B342B" stroke-width="1.4"/>
+            <circle cx="60" cy="42" r="6" fill="#7A6A52"/>
+            <rect x="48" y="4" width="24" height="6" rx="2" stroke="#3B342B" stroke-width="1.4"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">ii</div>
+        <h3>Stil tippen oder beschreiben.</h3>
+        <p>Aus 50 Vorlagen wählen — oder einfach „weicher Bob, kupferblond, leichte Stufen" in eigenen Worten beschreiben.</p>
+        <div class="step-illu" style="background:var(--bg); aspect-ratio:auto; padding:14px;">
+          <div class="mini-card" style="transform:none; width:100%; max-width:none; box-shadow:none; border:1px solid var(--line); padding:12px;">
+            <div class="mini-input" style="padding:9px 11px; font-size:12.5px;">
+              <span style="color:var(--ink);">weicher Bob, kupferblond…</span>
+              <span class="cursor"></span>
+            </div>
+            <div class="mini-chips" style="margin-top:10px;">
+              <span class="chip active">Bob</span>
+              <span class="chip">Pony</span>
+              <span class="chip">Stufig</span>
+              <span class="chip">Kupfer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">iii</div>
+        <h3>In Sekunden sehen.</h3>
+        <p>Die KI rendert die neue Frisur am eigenen Foto. Vorher und Nachher direkt vergleichen.</p>
+        <div class="step-illu" style="padding:0;">
+          <div style="position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; gap:2px;">
+            <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&q=80" style="width:100%;height:100%;object-fit:cover;" alt="Vorher"/>
+            <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&q=80" style="width:100%;height:100%;object-fit:cover;" alt="Nachher"/>
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:32px; height:32px; border-radius:50%; background:#fff; display:grid; place-items:center; box-shadow:var(--shadow);">↔</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">iv</div>
+        <h3>Per QR aufs Handy.</h3>
+        <p>QR-Code scannen, das Ergebnis landet auf dem eigenen Handy. Geteilt wird oft — und dein Salon ist mit dabei.</p>
+        <div class="step-illu" style="background:var(--bg); aspect-ratio:auto; padding:14px;">
+          <div style="display:grid; grid-template-columns:64px 1fr; gap:14px; align-items:center;">
+            <div style="aspect-ratio:1/1; border-radius:10px; background:
+              linear-gradient(45deg, #1A1612 25%, transparent 25%) 0 0/10px 10px,
+              linear-gradient(-45deg, #1A1612 25%, transparent 25%) 0 0/10px 10px,
+              linear-gradient(45deg, transparent 75%, #1A1612 75%) 5px 5px/10px 10px,
+              linear-gradient(-45deg, transparent 75%, #1A1612 75%) 5px 5px/10px 10px,
+              var(--bg-2);
+              border:1px solid var(--line);"></div>
+            <div style="font-size:12.5px; color:var(--ink-2); line-height:1.5;">Scannen, mitnehmen, mit Freund:innen teilen — ganz ohne Konto.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IN 5 MINUTES LIVE -->
+<section id="setup">
+  <div class="wrap">
+    <div class="section-eyebrow">In 5 Minuten live</div>
+    <h2 class="section-title">Abo abschließen, QR scannen, <em>fertig.</em></h2>
+    <p class="section-lead">Kein App-Store, kein Setup, kein IT-Termin. So bringst du Friseur AI in deinen Salon.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">i</div>
+        <h3>Tarif wählen.</h3>
+        <p>Online auf der Webseite buchen — sofort Zugang zum Salon-Dashboard.</p>
+        <div class="step-illu">
+          <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
+            <rect x="14" y="14" width="92" height="52" rx="8" stroke="#3B342B" stroke-width="1.4"/>
+            <rect x="22" y="24" width="48" height="6" rx="2" fill="#7A6A52"/>
+            <rect x="22" y="36" width="76" height="4" rx="2" fill="#3B342B" opacity=".25"/>
+            <rect x="22" y="46" width="60" height="4" rx="2" fill="#3B342B" opacity=".25"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">ii</div>
+        <h3>QR-Code im Dashboard.</h3>
+        <p>Im Studio-Dashboard erscheint dein persönlicher Pairing-QR — einmal pro iPad.</p>
+        <div class="step-illu">
+          <div style="width:88px; height:88px; border-radius:10px; background:
+              linear-gradient(45deg, #1A1612 25%, transparent 25%) 0 0/12px 12px,
+              linear-gradient(-45deg, #1A1612 25%, transparent 25%) 0 0/12px 12px,
+              linear-gradient(45deg, transparent 75%, #1A1612 75%) 6px 6px/12px 12px,
+              linear-gradient(-45deg, transparent 75%, #1A1612 75%) 6px 6px/12px 12px,
+              var(--bg);
+              border:1px solid var(--line);"></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">iii</div>
+        <h3>Mit dem iPad scannen.</h3>
+        <p>Kamera drauf, Anwendung öffnet sich im Vollbild, das iPad ist live. Keine App, kein Setup.</p>
+        <div class="step-illu">
+          <svg width="140" height="80" viewBox="0 0 140 80" fill="none">
+            <rect x="6" y="8" width="80" height="64" rx="8" stroke="#3B342B" stroke-width="1.4"/>
+            <rect x="14" y="16" width="64" height="48" rx="4" fill="#7A6A52" opacity=".18"/>
+            <path d="M92 40 L 116 40" stroke="#3B342B" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M108 32 L 116 40 L 108 48" stroke="#3B342B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect x="120" y="20" width="14" height="40" rx="3" stroke="#3B342B" stroke-width="1.4"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM / SALON BENEFITS -->
+<section id="salon" style="background:var(--bg-2);">
+  <div class="wrap">
+    <div class="section-eyebrow">Für deinen Salon</div>
+    <h2 class="section-title">Mehr als ein Service — ein Erlebnis im <em>Schaufenster.</em></h2>
+    <p class="section-lead">Friseur AI macht deinen Salon zum Gespräch. Walk-Ins, Buchungen, Social-Sharing — passiert nebenbei.</p>
+
+    <div class="whom-strip">
+      <span class="item">Einzelsalons</span>
+      <span class="item">Filialketten</span>
+      <span class="item">Barber Shops</span>
+      <span class="item">Beauty Studios</span>
+      <span class="item">Hochzeits‑Stylisten</span>
+    </div>
+
+    <div class="benefits">
+      <div class="benefit">
+        <div class="b-icon">★</div>
+        <h4>Neues Kundenerlebnis.</h4>
+        <p>Etwas, das es im Nachbarsalon nicht gibt. Ein Grund, reinzukommen, auch ohne Termin.</p>
+      </div>
+      <div class="benefit">
+        <div class="b-icon">⇨</div>
+        <h4>Walk-Ins erzeugen.</h4>
+        <p>Im Schaufenster sichtbar. Vorbeikommende halten an, probieren, buchen.</p>
+      </div>
+      <div class="benefit">
+        <div class="b-icon">↗</div>
+        <h4>Sharing macht Werbung.</h4>
+        <p>Kund:innen teilen ihr Ergebnis auf Insta und TikTok — mit deinem Salon-Tag.</p>
+      </div>
+      <div class="benefit">
+        <div class="b-icon">✓</div>
+        <h4>Sicher entscheiden.</h4>
+        <p>Die Kund:in hat den Look gesehen, bevor die Schere fällt. Reklamationen werden seltener.</p>
+      </div>
+      <div class="benefit">
+        <div class="b-icon">✎</div>
+        <h4>Eigene Vorlagen.</h4>
+        <p>Lade Looks aus deinem Portfolio hoch und mach sie zu wählbaren Stilen — so bleibt deine Handschrift sichtbar.</p>
+      </div>
+      <div class="benefit">
+        <div class="b-icon">⌂</div>
+        <h4>DSGVO‑konform.</h4>
+        <p>Foto wird nach jeder Sitzung automatisch gelöscht. Server in Frankfurt. AVV inklusive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE SPLITS -->
+<section>
+  <div class="wrap">
+    <!-- Split 1: Text-to-style -->
+    <div class="split">
+      <div>
+        <div class="section-eyebrow">In Worten</div>
+        <h3>Beschreiben statt suchen.</h3>
+        <p>Kund:innen wissen oft nicht, wie der Stil heißt — aber sie wissen, wie er sich anfühlen soll. Friseur AI versteht Alltagssprache — „etwas wie Zendaya 2019, aber kürzer" reicht.</p>
+        <p>Die KI schlägt drei Varianten vor und zeigt direkt am eigenen Foto, was sie meint.</p>
+      </div>
+      <div class="split-visual">
+        <div class="mini-feature">
+          <div class="mini-card">
+            <div class="mini-h">
+              <div class="av">L</div>
+              <div>
+                <div style="font-weight:600; font-size:14px;">Lina · Beratung</div>
+                <div style="color:var(--ink-3); font-size:12px;">Mo, 10:24 · Salon Marlowe</div>
+              </div>
+            </div>
+            <div class="mini-input">
+              <span>kürzer als jetzt, leicht stufig, kupfer</span>
+              <span class="cursor"></span>
+            </div>
+            <div class="mini-chips">
+              <span class="chip active">Stufiger Bob</span>
+              <span class="chip">Curtain Bangs</span>
+              <span class="chip">Kupferblond</span>
+              <span class="chip">+ 2 Varianten</span>
+            </div>
+            <div style="margin-top:14px; font-size:12px; color:var(--ink-3); display:flex; justify-content:space-between;">
+              <span>Generiert in 11s</span>
+              <span style="color:var(--accent);">3 Vorschläge bereit ↗</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Split 2: 50 presets -->
+    <div class="split reverse">
+      <div>
+        <div class="section-eyebrow">Mit einem Tipp</div>
+        <h3>50 Stile, kuratiert &amp; aktuell.</h3>
+        <p>Saisonal aktualisiert. Sortiert nach Länge, Schnitt und Farbe. Inkl. trendiger Looks aus Mailand, Paris, Tokyo — wöchentlich vom Friseur&nbsp;AI Style‑Team gepflegt.</p>
+        <p>Eigene Looks aus deinem Portfolio ergänzen den Katalog auf Wunsch — als „Marlowe Originals".</p>
+      </div>
+      <div class="split-visual" style="background:var(--bg-2);">
+        <div class="feature-grid">
+          <div class="tile" style="background-image:url('https://images.unsplash.com/photo-1521577352947-9bb58764b69a?w=300&q=70');"></div>
+          <div class="tile" style="background-image:url('https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=300&q=70');"></div>
+          <div class="tile" style="background-image:url('https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=300&q=70');"></div>
+          <div class="tile" style="background-image:url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=300&q=70');"></div>
+          <div class="tile featured" style="background-image:url('https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80');"></div>
+          <div class="tile" style="background-image:url('https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=300&q=70');"></div>
+          <div class="tile" style="background-image:url('https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=300&q=70');"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Split 3: Privacy / DSGVO -->
+    <div class="split">
+      <div>
+        <div class="section-eyebrow">Datenschutz</div>
+        <h3>Made in Germany.<br/>Privatsphäre <em>ohne Sternchen</em>.</h3>
+        <p>Das Foto deiner Kund:in bleibt nur bis zum Ende der Sitzung. Danach automatisch gelöscht — oder gar nicht erst gespeichert, wenn du das willst.</p>
+        <p>Server in Frankfurt, EU-Hosting, AVV im Onboarding. DSGVO-konform, mit allem Papierkram, den deine Steuerberaterin sehen will.</p>
+      </div>
+      <div class="split-visual" style="background:var(--card);">
+        <div style="position:absolute; inset:32px; display:flex; flex-direction:column; gap:12px; justify-content:center;">
+          <div style="display:flex; align-items:center; gap:12px; padding:14px 16px; background:var(--bg); border-radius:12px; border:1px solid var(--line); box-shadow:var(--shadow);">
+            <div style="width:32px; height:32px; border-radius:8px; background:#1A1612; color:var(--bg); display:grid; place-items:center; font-size:14px;">⌂</div>
+            <div>
+              <div style="font-weight:600; font-size:14px;">Frankfurt · DE</div>
+              <div style="font-size:12px; color:var(--ink-3);">Verschlüsselte Speicherung</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; padding:14px 16px; background:var(--bg); border-radius:12px; border:1px solid var(--line); box-shadow:var(--shadow);">
+            <div style="width:32px; height:32px; border-radius:8px; background:var(--accent); color:var(--accent-ink); display:grid; place-items:center; font-size:14px;">⏱</div>
+            <div>
+              <div style="font-weight:600; font-size:14px;">Auto-Löschung pro Sitzung</div>
+              <div style="font-size:12px; color:var(--ink-3);">Foto verschwindet, sobald die Kund:in fertig ist</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; padding:14px 16px; background:var(--bg); border-radius:12px; border:1px solid var(--line); box-shadow:var(--shadow);">
+            <div style="width:32px; height:32px; border-radius:8px; background:#FBF8F2; border:1px solid var(--line); color:var(--ink); display:grid; place-items:center; font-size:14px;">§</div>
+            <div>
+              <div style="font-weight:600; font-size:14px;">AVV inklusive</div>
+              <div style="font-size:12px; color:var(--ink-3);">Direkt zum Download</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="preise" style="background:var(--bg-2);">
+  <div class="wrap">
+    <div class="section-eyebrow">Preise</div>
+    <h2 class="section-title">Faire Preise. <em>Pro Standort.</em></h2>
+    <p class="section-lead">Ein Tarif pro Salon-Standort. Unbegrenzte Kund:innen, unbegrenzte Generierungen. Monatlich kündbar.</p>
+
+    <div class="price-grid">
+      <div class="price">
+        <div class="p-name">Solo</div>
+        <div class="p-amount"><sup>€</sup>49<span class="p-period"> /Monat</span></div>
+        <div class="p-desc">Für einen Standort. Ein iPad. Alles drin.</div>
+        <ul>
+          <li>1 Standort</li>
+          <li>Alle 50 Stilvorlagen</li>
+          <li>Unbegrenzte Generierungen</li>
+          <li>QR-Mitnahme aufs Handy</li>
+          <li>DSGVO-Setup &amp; AVV</li>
+          <li>E-Mail Support</li>
+        </ul>
+        <div class="btn-row"><a href="#cta" class="btn btn-ghost" style="width:100%;">Solo starten</a></div>
+      </div>
+
+      <div class="price featured">
+        <div class="price-badge">Beliebt</div>
+        <div class="p-name">Salon</div>
+        <div class="p-amount"><sup>€</sup>89<span class="p-period"> /Monat</span></div>
+        <div class="p-desc">Für aktive Salons mit mehreren iPads und eigener Handschrift.</div>
+        <ul>
+          <li>1 Standort, beliebig viele iPads</li>
+          <li>Salon-Branding auf dem iPad</li>
+          <li>Eigene Stilvorlagen („Originals")</li>
+          <li>Prioritäts-Support &amp; Onboarding</li>
+          <li>Salon-Statistiken im Dashboard</li>
+        </ul>
+        <div class="btn-row"><a href="#cta" class="btn btn-primary" style="width:100%;">Salon wählen</a></div>
+      </div>
+
+      <div class="price">
+        <div class="p-name">Kette</div>
+        <div class="p-amount serif">Custom</div>
+        <div class="p-desc">Für Ketten ab 5 Standorten. Zentrale Verwaltung.</div>
+        <ul>
+          <li>Unbegrenzte Standorte</li>
+          <li>Zentrale Style-Bibliothek</li>
+          <li>Zentrale Abrechnung</li>
+          <li>SLA &amp; dedizierter Ansprechpartner</li>
+          <li>Individuelle Vertragsgestaltung</li>
+        </ul>
+        <div class="btn-row"><a href="#cta" class="btn btn-ghost" style="width:100%;">Gespräch vereinbaren</a></div>
+      </div>
+    </div>
+
+    <p style="margin-top:24px; font-size:13px; color:var(--ink-3); text-align:center;">
+      Alle Preise zzgl. MwSt. · 30&nbsp;Tage kostenlos testen · Monatlich kündbar
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-eyebrow">Häufige Fragen</div>
+    <h2 class="section-title">Was Salon‑Inhaber:innen <em>wirklich</em> fragen.</h2>
+
+    <div class="faq">
+      <details>
+        <summary>Wie genau richte ich das iPad ein?</summary>
+        <div class="a">Du buchst online, bekommst im Dashboard einen QR-Code, scannst ihn mit dem iPad. Die Anwendung öffnet sich im Vollbild und ist sofort gepaart. Kein App-Store, keine IT, kein Termin.</div>
+      </details>
+      <details>
+        <summary>Wie schnell ist die KI?</summary>
+        <div class="a">Im Schnitt 12 Sekunden pro Generierung. Gerade lange genug, um einen Cappuccino hinzustellen.</div>
+      </details>
+      <details>
+        <summary>Was passiert mit den Fotos meiner Kund:innen?</summary>
+        <div class="a">Sie werden verschlüsselt verarbeitet und nach Ende der Sitzung automatisch gelöscht. Server in Frankfurt, AVV inklusive. Auf Wunsch läuft alles flüchtig im Arbeitsspeicher, ohne Speicherung.</div>
+      </details>
+      <details>
+        <summary>Kann ich eigene Stilvorlagen einpflegen?</summary>
+        <div class="a">Im Salon‑ und Filialen‑Tarif: ja. Lade Looks aus deinem Portfolio hoch, gib ihnen Namen — und sie erscheinen als wählbare Stile. Deine Handschrift, deine Vorlagen.</div>
+      </details>
+      <details>
+        <summary>Was, wenn die KI mal danebenliegt?</summary>
+        <div class="a">Passiert. Drei Vorschläge pro Generierung helfen, und mit einem Tipp wird neu gerendert. Wenn ein Stil bei euch nie passt, deaktiviert ihr ihn salon‑weit.</div>
+      </details>
+      <details>
+        <summary>Funktioniert das auch auf älteren iPads?</summary>
+        <div class="a">Alles ab iPad (8. Gen.) und iPad Air (3. Gen.) — die Generierung läuft in der Cloud, das iPad braucht nur Browser und Kamera.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" style="padding-bottom:60px;">
+  <div class="wrap">
+    <div class="cta-block">
+      <h2>Aufstellen. <em>Scannen.</em><br/>Loslegen.</h2>
+      <p>30 Tage kostenlos. Ohne Kreditkarte. Ohne Schulung. Ohne IT.</p>
+      <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+        <a href="#" class="btn btn-primary">Kostenlos starten →</a>
+        <a href="#" class="btn btn-ghost">Demo buchen</a>
+      </div>
+      <p style="margin-top:32px; font-size:13px; color:rgba(250,247,241,.5);">
+        Made in Hamburg · DSGVO‑konform · Server in Frankfurt
+      </p>
+    </div>
+
+    <footer class="foot">
+      <div class="foot-row">
+        <div class="brand" style="color:var(--ink-2);">
+          <span class="brand-mark">f</span>
+          <span>Friseur AI</span>
+        </div>
+        <div class="foot-links">
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+          <a href="#">AGB</a>
+          <a href="#">Kontakt</a>
+        </div>
+        <div>© 2025 Friseur AI GmbH</div>
+      </div>
+    </footer>
+  </div>
+</section>
+
+<!-- React + Babel for Tweaks panel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<!-- Marquee population -->
+<script>
+  // 50 preset cards in a marquee — duplicated for seamless loop
+  const PRESETS = [
+    ["Curtain Bangs","Mittellang"],["Soft Bob","Schulterlang"],["Pixie Cut","Kurz"],
+    ["Buzz Cut","Sehr kurz"],["Beach Waves","Lang"],["Lob","Mittellang"],
+    ["Stufiger Bob","Mittellang"],["French Bob","Kinnlang"],["Side Swept","Lang"],
+    ["Modern Mullet","Mittellang"],["Shag","Mittellang"],["Wolf Cut","Stufig"],
+    ["Box Braids","Lang"],["Locs","Lang"],["Afro Fade","Kurz"],
+    ["Cornrows","Geflochten"],["Slick Back","Kurz"],["Fade Crew","Kurz"],
+    ["Pompadour","Kurz"],["Quiff","Mittel"],["Undercut","Kurz"],
+    ["Textured Crop","Kurz"],["Long Layers","Lang"],["Blunt Cut","Schulter"],
+    ["Curly Bob","Mittellang"],["Octopus","Stufig"],["Butterfly","Lang"],
+    ["Money Piece","Color"],["Babylights","Color"],["Balayage","Color"],
+    ["Copper","Color"],["Platinum","Color"],["Caramel","Color"],
+    ["Honey Blond","Color"],["Cherry Cola","Color"],["Espresso","Color"],
+    ["Ash Brown","Color"],["Strawberry","Color"],["Smoky Black","Color"],
+    ["Side Part Lob","Mittellang"],["Hush Cut","Stufig"],["Italian Bob","Kinnlang"],
+    ["Birkin Bangs","Lang"],["Old Money","Lang"],["Curtain Pixie","Kurz"],
+    ["Razored Bob","Schulter"],["Choppy Lob","Mittellang"],["C‑Curl","Mittellang"],
+    ["Bottleneck Bangs","Lang"],["Effortless Wave","Lang"]
+  ];
+
+  // Cycling Unsplash hair photos for variety
+  const PHOTOS = [
+    "1531123897727-8f129e1688ce","1605497788044-5a32c7078486","1492106087820-71f1a00d2b11",
+    "1487412720507-e7ab37603c6f","1488426862026-3ee34a7d66df","1502823403499-6ccfcf4fb453",
+    "1521577352947-9bb58764b69a","1520975916090-3105956dac38","1554384645-13eab165c24b",
+    "1488207984690-d4f5a82b8bea","1469334031218-e382a71b716b","1494790108377-be9c29b29330",
+    "1438761681033-6461ffad8d80","1573496359142-b8d87734a5a2","1544005313-94ddf0286df2",
+    "1463453091185-61582044d556","1507003211169-0a1dd7228f2d","1502823403499-6ccfcf4fb453"
+  ];
+
+  function buildMarquee(){
+    const m = document.getElementById('marquee');
+    if(!m) return;
+    const track = document.createElement('div');
+    track.className = 'marquee-track';
+    const cards = PRESETS.map((p, i) => {
+      const ph = PHOTOS[i % PHOTOS.length];
+      return `<div class="preset"><div class="ph" style="background-image:url('https://images.unsplash.com/photo-${ph}?w=320&q=70');"></div><div class="meta"><span class="name">${p[0]}</span><span class="pill">${p[1]}</span></div></div>`;
+    }).join('');
+    track.innerHTML = cards + cards; // duplicate for seamless loop
+    m.appendChild(track);
+  }
+  buildMarquee();
+</script>
+
+<script type="text/babel">
+  const { useState, useEffect } = React;
+
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accent": "#7A6A52",
+    "heroVariant": "split"
+  }/*EDITMODE-END*/;
+
+  const ACCENTS = [
+    { v: "#7A6A52", l: "Taupe" },
+    { v: "#1A1612", l: "Tiefschwarz" },
+    { v: "#B85C3C", l: "Terracotta" },
+    { v: "#3D5A4C", l: "Salbei" },
+    { v: "#C9A961", l: "Champagner" },
+    { v: "#6E4E3F", l: "Walnuss" }
+  ];
+
+  function applyAccent(color){
+    document.documentElement.style.setProperty('--accent', color);
+  }
+  function applyHeroVariant(v){
+    const h1 = document.getElementById('heroTitle');
+    if(!h1) return;
+    if (v === "split"){
+      h1.innerHTML = 'Probiere deine neue Frisur aus — <em>bevor</em> du sie buchst.';
+    } else if (v === "question"){
+      h1.innerHTML = '„Wie steht mir das <em>wirklich</em>?" — jetzt sichtbar.';
+    } else if (v === "salon"){
+      h1.innerHTML = 'Self-Service Try-On — <em>live</em> in deinem Salon.';
+    } else if (v === "ai"){
+      h1.innerHTML = 'Try-on per iPad. <em>Live</em> am eigenen Foto.';
+    }
+  }
+
+  function App(){
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+    useEffect(() => { applyAccent(t.accent); }, [t.accent]);
+    useEffect(() => { applyHeroVariant(t.heroVariant); }, [t.heroVariant]);
+
+    return (
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="Akzentfarbe" />
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(6, 1fr)', gap:6, marginTop:4 }}>
+          {ACCENTS.map(a => (
+            <button key={a.v}
+              title={a.l}
+              onClick={() => setTweak('accent', a.v)}
+              style={{
+                width:'100%', aspectRatio:'1/1', borderRadius:8,
+                background:a.v, border: t.accent===a.v ? '2px solid #29261b' : '1px solid rgba(0,0,0,.15)',
+                cursor:'pointer', padding:0
+              }}/>
+          ))}
+        </div>
+        <TweakColor label="Eigene Farbe" value={t.accent} onChange={(v)=>setTweak('accent', v)} />
+
+        <TweakSection label="Hero‑Variante" />
+        <TweakSelect
+          label="Headline"
+          value={t.heroVariant}
+          options={[
+            { value:'split', label:'Probieren bevor du buchst' },
+            { value:'question', label:'„Wie steht mir das wirklich"' },
+            { value:'salon', label:'Self-Service im Salon' },
+            { value:'ai', label:'Try-on per iPad' },
+          ]}
+          onChange={(v)=>setTweak('heroVariant', v)}
+        />
+      </TweaksPanel>
+    );
+  }
+
+  const root = document.createElement('div');
+  document.body.appendChild(root);
+  ReactDOM.createRoot(root).render(<App/>);
+</script>
+
+</body>
+</html>
